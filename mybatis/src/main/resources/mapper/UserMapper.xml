@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.slums.hands.mapper.UserMapper">
+    <!-- 通过name查询 -->
+    <select id="getByName" resultType="com.slums.hands.model.UserModel">
+        <![CDATA[
+        SELECT *
+        FROM t_user
+        WHERE name = #{value}
+        LIMIT 1
+        ]]>
+    </select>
+
+    <select id="selectAll" resultType="com.slums.hands.model.UserModel">
+        select *
+        from t_user;
+    </select>
+
+    <select id="selectById" resultType="com.slums.hands.model.UserModel">
+        select *
+        from t_user
+        where id = #{id}
+    </select>
+</mapper>
