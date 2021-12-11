@@ -58,8 +58,8 @@ public class LeetCode_4 {
 
     @Test
     public void test() {
-        int[] nums1 = new int[]{1, 2};
-        int[] nums2 = new int[]{3, 4};
+        int[] nums1 = new int[]{1, 3};
+        int[] nums2 = new int[]{2};
         System.out.println(findMedianSortedArrays(nums1, nums2));
     }
 
