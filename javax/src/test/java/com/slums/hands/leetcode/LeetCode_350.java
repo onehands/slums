@@ -1,47 +1,32 @@
 package com.slums.hands.leetcode;
 
-import org.junit.Test;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
-import java.util.HashSet;
-import java.util.Set;
-
-/**
- * @author: onehands
- * @description: sth
- * @date: 2021/12/9 11:28
- * @version: 1.0
- */
 public class LeetCode_350 {
     public int[] intersect(int[] nums1, int[] nums2) {
-        Set<Integer> set = new HashSet<>();
-        int maxIndex = Math.max(nums1.length, nums2.length);
-        Set<Integer> list = new HashSet<>();
-        for (int i = 0; i < maxIndex; i++) {
-
-            if (i >= nums1.length) {
-
+        boolean bigger = nums1.length > nums2.length;
+        int[] tmp = bigger ? nums2 : nums1;
+        int[] target = bigger ? nums1 : nums2;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i : tmp) {
+            if (map.containsKey(i)) {
+                map.put(i, map.get(i) + 1);
             } else {
-                set.add(nums1[i]);
-            }
-            if (i >= nums2.length) {
-
-            } else {
-                if (set.contains(nums2[i])) {
-                    list.add(nums2[i]);
-                }
+                map.put(i, 1);
             }
         }
-        int[] result = new int[list.size()];
-        int i = 0;
-        for (Integer integer : list) {
-            result[i] = integer;
-            i++;
+        int[] tempArr = new int[target.length];
+        int index = 0;
+        for (int i : target) {
+            Integer count = map.getOrDefault(i, 0);
+            if (count > 0) {
+                map.put(i, map.get(i) - 1);
+                tempArr[index] = i;
+                index++;
+            }
         }
-        return result;
-    }
-
-    @Test
-    public void test() {
-        intersect(new int[]{4, 9, 5}, new int[]{9, 4, 9, 8, 4});
+        return Arrays.copyOfRange(tempArr, 0, index);
     }
 }

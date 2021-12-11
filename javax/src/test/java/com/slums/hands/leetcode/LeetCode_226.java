@@ -1,5 +1,6 @@
 package com.slums.hands.leetcode;
 
+import com.slums.hands.service.TreeNode;
 import org.junit.Test;
 
 /**
@@ -8,17 +9,17 @@ import org.junit.Test;
  * @date: 2021/10/26 16:28
  * @version: 1.0
  */
-public class LeetCode_283 {
-    public void moveZeroes(int[] nums) {
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = i; j < nums.length; j++) {
-                if (nums[i] == 0) {
-                    int temp = nums[i];
-                    nums[i] = nums[j];
-                    nums[j] = temp;
-                }
-            }
+public class LeetCode_226 {
+    public TreeNode invertTree(TreeNode root) {
+        if (root == null) {
+            return root;
         }
+        TreeNode right = root.right;
+        root.right = root.left;
+        root.left = right;
+        invertTree(root.right);
+        invertTree(root.left);
+        return root;
     }
 
     public void moveZeroes2(int[] nums) {
