@@ -1,7 +1,5 @@
 package com.slums.hands.leetcode;
 
-import com.slums.hands.service.TreeNode;
-
 import java.util.ArrayList;
 import java.util.List;
 

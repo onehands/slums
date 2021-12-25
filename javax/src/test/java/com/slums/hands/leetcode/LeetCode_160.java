@@ -1,7 +1,5 @@
 package com.slums.hands.leetcode;
 
-import com.slums.hands.service.ListNode;
-
 /**
  * @author: onehands
  * @description: sth

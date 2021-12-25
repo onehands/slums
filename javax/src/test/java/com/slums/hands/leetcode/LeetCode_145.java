@@ -1,5 +1,7 @@
 package com.slums.hands.leetcode;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -10,7 +12,7 @@ import java.util.Stack;
  * @date: 2021/10/26 16:28
  * @version: 1.0
  */
-public class LeetCode_144 {
+public class LeetCode_145 {
 
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
@@ -20,30 +22,37 @@ public class LeetCode_144 {
 
     private void fillList(List<Integer> list, TreeNode root) {
         if (root != null) {
-            list.add(root.val);
             fillList(list, root.left);
             fillList(list, root.right);
+            list.add(root.val);
         }
     }
 
-    public List<Integer> preorderTraversal2(TreeNode root) {
+    public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         if (root == null) {
             return list;
         }
         Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
-        while (!stack.isEmpty()) {
-            TreeNode node = stack.pop();
-            if (node == null) {
-                continue;
+        TreeNode cur = root;
+        while (cur != null || !stack.isEmpty()) {
+            if (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            } else {
+                cur = stack.pop();
+                list.add(cur.val);
+                cur = cur.right;
             }
-            list.add(node.val);
-            stack.push(node.right);
-            stack.push(node.left);
         }
         return list;
     }
 
+    @Test
+    public void test() {
+        Integer[] data = new Integer[]{1,null,2,3};
+        postorderTraversal(TreeNodeUtil.arrayToTreeNode(data));
+
+    }
 
 }

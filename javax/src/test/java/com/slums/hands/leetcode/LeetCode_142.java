@@ -1,7 +1,5 @@
 package com.slums.hands.leetcode;
 
-import com.slums.hands.service.ListNode;
-
 public class LeetCode_142 {
     public ListNode detectCycle(ListNode head) {
         if (head == null) {

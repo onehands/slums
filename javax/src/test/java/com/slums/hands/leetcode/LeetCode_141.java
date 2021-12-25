@@ -1,6 +1,5 @@
 package com.slums.hands.leetcode;
 
-import com.slums.hands.service.ListNode;
 import org.junit.Test;
 
 /**

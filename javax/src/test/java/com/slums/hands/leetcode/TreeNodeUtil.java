@@ -1,4 +1,4 @@
-package com.slums.hands.service;
+package com.slums.hands.leetcode;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -33,7 +33,7 @@ public class TreeNodeUtil {
     }
 
     public static void main(String[] args) {
-        Integer[] data = new Integer[]{5, 4, 6, null, null, 3, 7};
+        Integer[] data = new Integer[]{1, null, 2, 3};
         TreeNode node = arrayToTreeNode(data);
         System.out.println(node);
     }
