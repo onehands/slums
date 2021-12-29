@@ -1,5 +1,7 @@
 package com.slums.hands.leetcode;
 
+import org.junit.Test;
+
 /**
  * @author: onehands
  * @description: sth
@@ -19,5 +21,10 @@ public class LeetCode_24 {
         next.next = head;
         head.next = swapPairs(theRest);
         return next;
+    }
+    @Test
+    public void test() {
+        ListNode head = new ListNode(1, new ListNode(2, new ListNode(3)));
+        System.out.println(swapPairs(head));
     }
 }

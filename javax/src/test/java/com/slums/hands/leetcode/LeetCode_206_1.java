@@ -35,6 +35,6 @@ public class LeetCode_206_1 {
     @Test
     public void test() {
         ListNode head = new ListNode(1, new ListNode(2, new ListNode(3)));
-        System.out.println(reverseList2(head));
+        System.out.println(reverseList(head));
     }
 }

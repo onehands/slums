@@ -8,6 +8,7 @@
         <module>mybatis</module>
         <module>javax</module>
         <module>spi</module>
+        <module>sparkx</module>
     </modules>
 
     <groupId>com.slums</groupId>
