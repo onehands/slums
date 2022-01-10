@@ -42,5 +42,13 @@ public class DateTest {
             cal.add(Calendar.DATE, 1);
         }
     }
+
+    @Test
+    public void dateTest2() {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MINUTE, -5);
+        String endDateStr = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cal.getTime());
+        System.out.println(endDateStr);
+    }
 }
 
