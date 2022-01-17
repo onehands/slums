@@ -27,3 +27,4 @@ gradle/
 classes
 
 *.log
+*.hprof
