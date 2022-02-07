@@ -17,9 +17,9 @@ public class DateTest {
 
 //每日拉取增量数据
         Calendar cal = Calendar.getInstance();
-        cal.set(2021, Calendar.SEPTEMBER, 26);
+        cal.set(2021, Calendar.OCTOBER, 1);
 //2021-09-25
-        while (cal.get(Calendar.YEAR) < 2022 && cal.get(Calendar.MONTH) < 9) {
+        while (cal.get(Calendar.YEAR) < 2022) {
             String date_str = new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime());
 //     spark.sql(s"""
 // insert into `spark_cred_r_data_mongo`.`riskevaluatelogdoc_hash_pt_new_back` select `_id`,

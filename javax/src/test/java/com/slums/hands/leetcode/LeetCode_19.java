@@ -55,10 +55,29 @@ public class LeetCode_19 {
         return head;
     }
 
+    public ListNode removeNthFromEnd3(ListNode head, int n) {
+        head = new ListNode(-1, head);
+        ListNode fast = head;
+        ListNode slow = head;
+        while (n > 0) {
+            fast = fast.next;
+            n--;
+        }
+        ListNode prev = slow;
+        while (fast != null) {
+            fast = fast.next;
+            prev = slow;
+            slow = slow.next;
+        }
+        prev.next = slow.next;
+        return head.next;
+
+    }
+
     @Test
     public void test() {
-        ListNode node = new ListNode(1);
-        System.out.println(removeNthFromEnd(node, 1));
+        ListNode node = new ListNode(1, new ListNode(2, new ListNode(3)));
+        System.out.println(removeNthFromEnd3(node, 2));
     }
 
 }

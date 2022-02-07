@@ -37,6 +37,18 @@ public class LeetCode_283 {
         }
     }
 
+    public void moveZeroes3(int[] nums) {
+        for (int i = 0, j = 0; i < nums.length && j <= i; i++) {
+            if (nums[i] != 0) {
+                if (nums[j] == 0) {
+                    nums[j] = nums[i];
+                    nums[i] = 0;
+                }
+                j++;
+            }
+        }
+    }
+
     @Test
     public void test() {
 //        int[] arr = new int[]{0, 1, 0, 3, 12};
@@ -44,8 +56,8 @@ public class LeetCode_283 {
 //        for (int i : arr) {
 //            System.out.println(i);
 //        }
-        int[] arr = new int[]{1, 0};
-        moveZeroes2(arr);
+        int[] arr = new int[]{1, 0, 1};
+        moveZeroes3(arr);
         for (int i : arr) {
             System.out.println(i);
         }
