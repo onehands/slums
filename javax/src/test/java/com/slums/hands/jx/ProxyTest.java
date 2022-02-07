@@ -13,7 +13,7 @@ import java.lang.reflect.Proxy;
  * @version: 1.0
  */
 public class ProxyTest {
-    class User {
+    class User implements U {
         private String name;
 
         public User(String name) {
@@ -23,6 +23,10 @@ public class ProxyTest {
         public String getName() {
             return name;
         }
+    }
+
+    interface U {
+        String getName();
     }
 
     class ProxyA implements InvocationHandler {
@@ -51,7 +55,7 @@ public class ProxyTest {
     @Test
     public void proxyTest() {
         ProxyA proxyA = new ProxyA(new User("onehands"));
-        User user = (User) proxyA.getInstance();
+        U user = (U) proxyA.getInstance();
         System.out.println(user.getName());
     }
 }
