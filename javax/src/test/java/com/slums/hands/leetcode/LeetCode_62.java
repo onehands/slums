@@ -12,7 +12,7 @@ public class LeetCode_62 {
     public int uniquePaths(int m, int n) {
         int[][] result = new int[m][n];
         for (int i = 0; i < n; i++) {
-            result[0][n] = 1;
+            result[0][i] = 1;
         }
         for (int i = 0; i < m; i++) {
             result[i][0] = 1;
