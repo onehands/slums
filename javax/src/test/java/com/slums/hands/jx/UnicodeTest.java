@@ -12,6 +12,8 @@ public class UnicodeTest {
     @Test
     public void test() {
         System.out.println((byte) '你');
+        System.out.println((byte) '♬');
         //96 = #0060
+
     }
 }

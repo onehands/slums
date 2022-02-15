@@ -7,6 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,9 +21,9 @@ import java.sql.Statement;
 public class SqlTest {
     @Test
     public void initData() throws ClassNotFoundException, SQLException, FileNotFoundException, UnsupportedEncodingException {
-        Class.forName("com.mysql.jdbc.Driver");
-//        Connection con = DriverManager.getConnection();
-        Connection con = null;
+//        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb?characterEncoding=UTF-8","root","mysql_pwd");
+//        Connection con = null;
         con.setAutoCommit(true);
         Statement stmt = con.createStatement();
 
@@ -44,6 +45,9 @@ public class SqlTest {
         while (rs.next()) {
             System.out.println(rs.getString(1));
         }
+        PreparedStatement pst = con.prepareStatement("update t_user set name = ?");
+        pst.setString(1,"郭富城");
+        pst.execute();
 
 
     }
