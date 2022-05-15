@@ -31,7 +31,7 @@ public class SlumsApplication {
         System.out.println(hellApi.add(1, 2));
         ;
         System.out.println(hellApi.add(1, 2));
-        ctx.getBean(MyServiceB.class).add();
+//        ctx.getBean(MyServiceB.class).add();
         ctx.getBean(MyServiceA.class).add(1, 2);
     }
 

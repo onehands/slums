@@ -15,12 +15,12 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Slf4j
 @Component
-public class MyAspect {
+public class MyAspect2 {
     @Pointcut("execution(* com.slums.hands.service..*(..))")
-    public void controllerAspect() {
+    public void controllerAspect2() {
     }
 
-    @Before("controllerAspect()")
+    @Before("controllerAspect2()")
     public void serviceAround(JoinPoint pjp) {
         long current = System.currentTimeMillis();
         final String className = pjp.getTarget().getClass().getSimpleName();
@@ -30,8 +30,9 @@ public class MyAspect {
                 methodName,
                 pjp.getArgs());
     }
-    @AfterReturning("controllerAspect()")
-    public void afterReturning(){
+
+    @AfterReturning("controllerAspect2()")
+    public void afterReturning() {
         log.info("afterReturning");
     }
 

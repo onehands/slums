@@ -21,7 +21,7 @@ public class MyServiceA {
 
     @AutoLog
     public void add(int a, int b) {
-        System.out.println(myServiceB);
+//        System.out.println(myServiceB);
         System.out.println("call add");
     }
 

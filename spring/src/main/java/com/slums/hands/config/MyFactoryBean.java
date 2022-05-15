@@ -9,6 +9,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.FactoryBean;
+import org.springframework.beans.factory.InitializingBean;
 
 import java.lang.reflect.Method;
 
@@ -18,22 +19,16 @@ import java.lang.reflect.Method;
  * @date: 2021/10/18 17:13
  * @version: 1.0
  */
-public class MyFactoryBean implements FactoryBean, BeanFactoryAware {
+public class MyFactoryBean implements FactoryBean, BeanFactoryAware, InitializingBean {
 
     private BeanFactory beanFactory;
     @Setter
     private Class<?> classz;
+    private Object obj;
 
     @Override
     public Object getObject() throws Exception {
-        return Enhancer.create(HellApi.class, new MethodInterceptor() {
-            @Override
-            public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-                System.out.println("被代理");
-                return 2;
-            }
-
-        });
+        return obj;
     }
 
     @Override
@@ -44,5 +39,17 @@ public class MyFactoryBean implements FactoryBean, BeanFactoryAware {
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
         this.beanFactory = beanFactory;
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        obj = Enhancer.create(HellApi.class, new MethodInterceptor() {
+            @Override
+            public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+                System.out.println("被代理");
+                return 2;
+            }
+
+        });
     }
 }
